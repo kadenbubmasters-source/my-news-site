@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Unfiltered News</title></head>
+<body>
+    <h1>Daily News</h1>
+    <div id="daily"></div>
+    <h1>Weekly Highlights</h1>
+    <div id="weekly"></div>
+
+    <script>
+        fetch('news.json')
+            .then(res => res.json())
+            .then(data => {
+                data.daily.forEach(i => document.getElementById('daily').innerHTML += `<p><a href="${i.url}">${i.title}</a> (${i.source})</p>`);
+                data.weekly.forEach(i => document.getElementById('weekly').innerHTML += `<p><strong>${i.title}</strong> (${i.source})</p>`);
+            });
+    </script>
+</body>
+</html>
